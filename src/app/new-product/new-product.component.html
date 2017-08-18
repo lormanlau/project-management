@@ -1,0 +1,25 @@
+<h1>Create a New Product</h1>
+<form #form="ngForm" (ngSubmit)="submitNewItem($event)">
+	<p>Title <input 
+	type="text" 
+	name="title"
+	required
+	minlength="1"
+	[(ngModel)]="product.title"
+	#title='ngModel'>
+	{{title.errors | json}}</p>
+	<p>Price <input 
+	type="text" 
+	name="price"
+	required
+	minlength="1"
+	[(ngModel)]="product.price"
+	#price="ngModel">
+	{{price.errors | json}}</p>
+	<p>Image Url <input 
+	type="text" 
+	name="url"
+	[(ngModel)]="product.url"
+	#url="ngModel"></p>
+	<p><input (click)="submitNewItem()" [routerLink]="['/products']" [disabled]="!form.valid" type="submit" value="Create"></p>
+</form>

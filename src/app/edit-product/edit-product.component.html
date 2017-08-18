@@ -1,0 +1,33 @@
+<h1>Edit Product</h1>
+{{products}}
+{{id}}
+<form #form='ngForm'>
+	<p>Title <input 
+	value={{products.title}} 
+	type="text" 
+	name="title"
+	required
+	minlength="1"
+	[(ngModel)]="products.title"
+	#title='ngModel'>
+	{{title.errors | json}}</p>
+	<p>Price <input 
+	value={{products.price}} 
+	type="text" 
+	name="price"
+	required
+	minlength="1"
+	[(ngModel)]="products.price"
+	#price="ngModel">
+	{{price.errors | json}}</p>
+	<p>Image Url <input 
+	value={{products.url}} 
+	type="text" 
+	name="url"
+	[(ngModel)]="products.url"
+	#url="ngModel">
+	</p>
+	<p><input [routerLink]="['/products']"
+	(click)="edit()"[disabled]="!form.valid" type="submit" value="UPDATE"></p>
+	<p><input [routerLink]="['/products']" (click)="delete()" type="submit" value="Delete"></p>
+</form>
